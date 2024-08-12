@@ -2,6 +2,8 @@ require_relative 'pawn.rb'
 require_relative 'rook.rb'
 require_relative 'bishop.rb'
 require_relative 'knight.rb'
+require_relative 'king.rb'
+require_relative 'queen.rb'
 
 class Board
 
@@ -41,6 +43,14 @@ class Board
         #place black knights
         @grid[7][1]=Knight.new('black',[7][1])
         @grid[7][6]=Knight.new('black',[7][6])
+
+        #place kings
+        @grid[0][4]=King.new('white',[0][4])
+        @grid[7][4]=King.new('black',[7][4])
+        #place black kings
+        @grid[0][3]=Queen.new('white',[0][3])
+        @grid[7][3]=Queen.new('black',[7][3])
+        
     end
 
     def display
