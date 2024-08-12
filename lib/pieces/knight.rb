@@ -27,7 +27,8 @@ class Knight < Piece
     def valid_move?(target_position, board)
         current_row, current_col = @position
         new_row, new_col = target_position
-      
+        
+        return false if current_row.nil? || new_row.nil? || current_col.nil? || new_col.nil?
         # First, check if the new position is within the bounds of the chessboard
         if new_row.between?(0, 7) && new_col.between?(0, 7)
           
@@ -36,7 +37,7 @@ class Knight < Piece
           col_difference = new_col - current_col
       
           # Target cell on the board
-          target_cell = board[new_row][new_col]
+          target_cell = board.grid[new_row][new_col]
       
           # For a move to be in an L shape, the number of rows moved and columns moved must match the knight's movement pattern
           if (row_difference.abs == 2 && col_difference.abs == 1) || (row_difference.abs == 1 && col_difference.abs == 2)

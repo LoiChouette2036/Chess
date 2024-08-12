@@ -40,30 +40,30 @@ class Bishop < Piece
             if row_difference < 0 && col_difference > 0
               (current_col+1).upto(new_col - 1) do |col|
                 row = current_row - (col - current_col)
-                return false unless board[row][col] == "."
+                return false unless board.grid[row][col] == "."
               end
             # Up-left
             elsif row_difference < 0 && col_difference < 0
               (current_col - 1).downto(new_col + 1) do |col|
                 row = current_row - (current_col - col)
-                return false unless board[row][col] == "."
+                return false unless board.grid[row][col] == "."
               end
             # Down-right
             elsif row_difference > 0 && col_difference > 0
               (current_col+1).upto(new_col - 1) do |col|
                 row = current_row + (col - current_col)
-                return false unless board[row][col] == "."
+                return false unless board.grid[row][col] == "."
               end
             # Down-left
             elsif row_difference > 0 && col_difference < 0
               (current_col - 1).downto(new_col + 1) do |col|
                 row = current_row + (current_col - col)
-                return false unless board[row][col] == "."
+                return false unless board.grid[row][col] == "."
               end
             end
       
             # Check the target cell
-            return board[new_row][new_col] == "." || board[new_row][new_col].color != @color
+            return board.grid[new_row][new_col] == "." || board.grid[new_row][new_col].color != @color
           end
         end
       

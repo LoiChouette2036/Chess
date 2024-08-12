@@ -53,7 +53,7 @@ class Queen < Piece
       
           row, col = current_row + row_step, current_col + col_step
           while row != new_row && col != new_col
-            return false unless board[row][col] == "."
+            return false unless board.grid[row][col] == "."
             row += row_step
             col += col_step
           end
@@ -61,15 +61,15 @@ class Queen < Piece
         when :straight
           if current_row == new_row
             range = current_col < new_col ? (current_col + 1..new_col - 1) : (new_col + 1..current_col - 1)
-            range.each { |col| return false unless board[current_row][col] == "." }
+            range.each { |col| return false unless board.grid[current_row][col] == "." }
           elsif current_col == new_col
             range = current_row < new_row ? (current_row + 1..new_row - 1) : (new_row + 1..current_row - 1)
-            range.each { |row| return false unless board[row][current_col] == "." }
+            range.each { |row| return false unless board.grid[row][current_col] == "." }
           end
         end
       
         # Check the target cell
-        target_cell = board[new_row][new_col]
+        target_cell = board.grid[new_row][new_col]
         return target_cell == "." || target_cell.color != @color
     end
       

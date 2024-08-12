@@ -32,7 +32,7 @@ class King < Piece
         if (new_row - current_row).abs <= 1 && (new_col-current_col) <= 1
             # Ensure the target is within the bounds of the board
             if new_row.between?(0, 7) && new_col.between?(0, 7)
-                target_cell = board[new_row][new_col]
+                target_cell = board.grid[new_row][new_col]
 
                 # Check if the target cell is empty or contains an opponent's piece
                 return target_cell == "." || target_cell.color != @color
