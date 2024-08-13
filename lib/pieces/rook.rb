@@ -2,17 +2,19 @@ require_relative 'piece.rb'
 
 class Rook < Piece
 
-    attr_accessor :position
+    attr_accessor :position, :has_moved
     attr_reader :color
 
     def initialize(color,position)
         super(color,position)
         @symbol = color == 'white' ? "\u2656" : "\u265C"
+        @has_moved = false
     end
 
     def move(target_position,board)
         if valid_move?(target_position,board)
             @position = target_position
+            @has_moved = true
             true
         else
             false
